@@ -5,7 +5,6 @@ cmake_minimum_required(VERSION 3.11 FATAL_ERROR)
 
 project(EventBusDev LANGUAGES CXX)
 
-option(ENABLE_TEST "Enable test" ON)
 option(ENABLE_PERFORMANCE "Enable performance subproject" OFF)
 option(ENABLE_LIBCXX "Enable build with libc++" OFF)
 
@@ -80,10 +79,10 @@ set(CMAKE_CXX_FLAGS_UBSAN
 	FORCE)
 
 add_subdirectory(lib/)
-add_subdirectory(use_case/)
 
 if(ENABLE_TEST)
 	enable_testing()
+	add_subdirectory(use_case/)
 	add_subdirectory(test/)
 endif()
 
